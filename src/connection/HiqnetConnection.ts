@@ -3,19 +3,11 @@ import { TCPHelper, InstanceStatus } from '@companion-module/base'
 import { HIQNET_PORT, HIQNET_KEEP_ALIVE_INTERVAL_MS, HIQNET_HEADER_LEN } from '../protocol/constants.js'
 import { buildDiscoInfo, decodeHeader, type HiqnetHeader } from '../protocol/message.js'
 
-export interface HiqnetConnectionEvents {
+type HiqnetConnectionEventMap = {
 	connected: []
 	disconnected: []
 	status: [status: InstanceStatus, message?: string]
 	message: [header: HiqnetHeader, payload: Buffer]
-}
-
-// Typed event declarations — augments EventEmitter with strict event signatures.
-// Declaration merging is safe here because we own both sides.
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export declare interface HiqnetConnection {
-	on<K extends keyof HiqnetConnectionEvents>(event: K, listener: (...args: HiqnetConnectionEvents[K]) => void): this
-	emit<K extends keyof HiqnetConnectionEvents>(event: K, ...args: HiqnetConnectionEvents[K]): boolean
 }
 
 /**
@@ -25,8 +17,7 @@ export declare interface HiqnetConnection {
  *   - Sends keep-alive DiscoInfo packets on a timer
  *   - Emits typed events for the module instance to consume
  */
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export class HiqnetConnection extends EventEmitter {
+export class HiqnetConnection extends EventEmitter<HiqnetConnectionEventMap> {
 	private socket: TCPHelper | null = null
 	private receiveBuffer = Buffer.alloc(0)
 	private keepAliveTimer: ReturnType<typeof setInterval> | null = null
