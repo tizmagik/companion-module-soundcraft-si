@@ -1,17 +1,17 @@
 {
 	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
-	"id": "your-module-name",
-	"name": "your-module-name",
-	"shortname": "module-shortname",
-	"description": "A short one line description of your module",
-	"version": "0.0.0",
+	"id": "soundcraft-si",
+	"name": "Soundcraft Si Series",
+	"shortname": "Si Series",
+	"description": "Control Soundcraft Si Impact, Expression, Performer, and Impression mixers via Harman HiQnet",
+	"version": "0.1.0",
 	"license": "MIT",
-	"repository": "git+https://github.com/bitfocus/companion-module-your-module-name.git",
-	"bugs": "https://github.com/bitfocus/companion-module-your-module-name/issues",
+	"repository": "git+https://github.com/tizmagik/companion-module-soundcraft-si.git",
+	"bugs": "https://github.com/tizmagik/companion-module-soundcraft-si/issues",
 	"maintainers": [
 		{
-			"name": "Your name",
-			"email": "Your email"
+			"name": "Jeremy Gayed",
+			"email": ""
 		}
 	],
 	"runtime": {
@@ -21,7 +21,7 @@
 		"entrypoint": "../dist/main.js"
 	},
 	"legacyIds": [],
-	"manufacturer": "Your company",
-	"products": ["Your product"],
-	"keywords": []
+	"manufacturer": "Soundcraft",
+	"products": ["Si Impact", "Si Expression", "Si Performer", "Si Impression"],
+	"keywords": ["soundcraft", "hiqnet", "mixer", "audio", "si impact", "si expression", "si performer"]
 }
